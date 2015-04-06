@@ -37,7 +37,7 @@ public class WorkSpace {
 
     public double getAreaTotal(){
         double areaTotal = 0;
-        for (int i = 0; i < limiteFigura; i++) {
+        for (int i = 0; i < figuras.size(); i++) {
             areaTotal += figuras.get(i).getArea();
         }
         return  areaTotal;
@@ -45,7 +45,7 @@ public class WorkSpace {
 
     public double getApotema(){
         double apotemaTotal = 0;
-        for (int i = 0; i < limiteFigura; i++) {
+        for (int i = 0; i < figuras.size(); i++) {
             Figura figura = figuras.get(i);
             if (figura instanceof Hexagono)
             apotemaTotal += ((Hexagono) figuras.get(i)).getApotema();
@@ -54,12 +54,44 @@ public class WorkSpace {
     }
 
     public void cambiarFigura(Figura figVieja, Figura figNueva){
-        for (int i = 0; i < limiteFigura; i++) {
+        for (int i = 0; i < figuras.size(); i++) {
             if (figuras.get(i).equals(figVieja)){
                 figuras.set(i,figNueva);
             return ;
             }
         }
+    }
+
+    public double perimetroTotal(){
+        double result = 0;
+        for (int i = 0; i < figuras.size() ; i++) {
+            result += figuras.get(i).getPerimetro();
+        }
+        return result;
+    }
+
+    public List<Figura> getFiguras() {
+        return figuras;
+    }
+
+    public void setFiguras(List<Figura> figuras) {
+        this.figuras = figuras;
+    }
+
+    public int getLimiteFigura() {
+        return limiteFigura;
+    }
+
+    public void setLimiteFigura(int limiteFigura) {
+        this.limiteFigura = limiteFigura;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
 }
 
