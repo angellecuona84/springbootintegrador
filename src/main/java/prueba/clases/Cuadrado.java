@@ -7,12 +7,9 @@ public class Cuadrado extends Figura {
 
     private int lado;
 
-    public Cuadrado(int numeroLados) {
-        super(numeroLados);
-    }
-
-    public Cuadrado(int numeroLados, int lado) {
-        super(numeroLados);
+    public Cuadrado(int lado) {
+        super();
+        super.numeroLados = 4;
         this.lado = lado;
     }
 

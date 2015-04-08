@@ -7,13 +7,14 @@ public class Hexagono extends Figura{
 
     private int radio;
 
-    public Hexagono(int numeroLados, int radio) {
-        super(numeroLados);
+    public Hexagono(int radio) {
+        super();
+        super.numeroLados = 6;
         this.radio = radio;
     }
 
-    public Hexagono(int numeroLados) {
-        super(numeroLados);
+    public Hexagono() {
+        super.numeroLados = 6;
     }
 
     @Override

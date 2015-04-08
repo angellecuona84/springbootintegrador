@@ -23,13 +23,18 @@ public class WorkSpace {
             figuras.add(figura);
         return true;
         }
-        else throw new Exception("Ha excedido el limite permitido de figuras");
+        else throw new Exception("Ha excedido el limite permitido de figuras para este Workspace");
     }
 
     public boolean eliminarFigura(Figura figura) {
         figuras.remove(figura);
         return true;
         }
+
+    public boolean eliminarFiguraPos(int pos) {
+        figuras.remove(pos);
+        return true;
+    }
 
     public boolean isLleno(){
         return figuras.size() == limiteFigura ;

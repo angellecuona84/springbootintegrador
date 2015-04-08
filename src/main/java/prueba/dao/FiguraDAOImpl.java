@@ -20,8 +20,8 @@ public class FiguraDAOImpl implements FiguraDAO {
     public FiguraDAOImpl() throws Exception {
         baseDatos = new HashMap<String,WorkSpace>();
         WorkSpace workSpace = new WorkSpace("Prueba", 3);
-        workSpace.agregarFigura(new Triangulo(3,10,5,18));
-        workSpace.agregarFigura(new Cuadrado(4,10));
+        workSpace.agregarFigura(new Triangulo(10,5,18));
+        workSpace.agregarFigura(new Cuadrado(10));
         baseDatos.put("WorkSpace",workSpace);
     }
 
@@ -38,5 +38,15 @@ public class FiguraDAOImpl implements FiguraDAO {
     @Override
     public double perimetroTotal() {
         return  baseDatos.get("WorkSpace").perimetroTotal();
+    }
+
+    @Override
+    public void eliminarFiguraPos(int valor) {
+        baseDatos.get("WorkSpace").eliminarFiguraPos(valor);
+    }
+
+    @Override
+    public void adicionarCuadrado(int valor) throws Exception {
+        baseDatos.get("WorkSpace").agregarFigura(new Cuadrado(valor));
     }
 }

@@ -21,7 +21,7 @@ public class Seguridad extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .authorizeRequests()
-                .antMatchers("/").permitAll()
+                .antMatchers("/index", /*"/webjars/bootstrap/3.2.0/css/bootstrap.min.css",*/ "/adicionarCuadrado").permitAll()
                 .anyRequest().authenticated()
                 .and()
                 .formLogin()
@@ -37,6 +37,13 @@ public class Seguridad extends WebSecurityConfigurerAdapter {
         auth
                 .inMemoryAuthentication()
                 .withUser("angel").password("angel").roles("USER");
+    }
+
+    @Override
+    public void configure(WebSecurity web) throws Exception {
+        web
+                .ignoring()
+                .antMatchers("/webjars/**"); // #3
     }
 }
 

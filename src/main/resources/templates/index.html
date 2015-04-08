@@ -9,6 +9,7 @@
           rel="stylesheet" media="screen" />
 </head>
 <body>
+
 <div class="container">
     <div class="row clearfix">
         <div class="col-md-12 column">
@@ -39,8 +40,10 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr th:each="figura : ${figuras}">
-                    <td th:text="${#ids.seq('')}"></td>
+                <tr th:each="figura,row : ${figuras}">
+                    <td th:text="${#ids.seq('')}">
+
+                    </td>
                     <!--td th:text="${figura.numeroLados}"></td-->
                     <td th:switch="${figura.numeroLados}">
                         <p th:case = "3">Triangulo</p>
@@ -49,8 +52,12 @@
                     </td>
                     <td th:text="${figura.area}"></td>
                     <td th:text="${figura.perimetro}"></td>
+                    <td>
+
+                        <a href="/Eliminar.html" th:href="@{/Eliminar(id=${row.index})}"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a>
+                    </td>
                 </tr>
-                <tr>
+                <tr class="info">
                     <td th:text="${#ids.seq('')}"></td>
                     <td th:text="-----"></td>
                     <td th:text="${areaTotal}"></td>
@@ -58,10 +65,74 @@
                 </tr>
                 </tbody>
             </table>
-            <div class="col-md-12 column">
-            <button type="submit" class="btn btn-default">Adicionar</button>
-            <button type="submit" class="btn btn-default">Eliminar</button>
+            <div class="alert alert-warning" role="alert" th:if="*{error != null}" th:text="${error}">
+                <label th:text="${error}"></label>
             </div>
+            <!--div class="col-md-12 column">
+                <div class="btn-group">
+                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                        Action <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu" role="menu">
+                        <li><a href="#">Action</a></li>
+                        <li><a href="#">Another action</a></li>
+                        <li><a href="#">Something else here</a></li>
+                        <li class="divider"></li>
+                        <li><a href="#">Separated link</a></li>
+                    </ul>
+                </div>
+            <button type="submit" class="btn btn-default">Adicionar</button>
+            </div-->
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="col-md-6">
+                <label>Adicionar Cuadrado</label>
+                <form class="form-inline" th:action="@{/adicionarCuadrado}" method="post" role="form">
+                    <div class="form-group" >
+                        <label for="lado">Lado</label>
+                        <input type="text" class="form-control" id="lado" name="lado"/>
+                    </div>
+                    <button type="submit" class="btn btn-default">Adicionar</button>
+                 </form>
+            </div>
+            <div class="col-md-6">
+                <label>Adicionar Hexagono</label>
+                <form class="form-inline" th:action="@{/adicionarHexagono}" method="post" role="form">
+                    <div class="form-group" >
+                        <label for="radio">Radio</label>
+                        <input type="text" class="form-control" id="radio" />
+                    </div>
+                    <button type="submit" class="btn btn-default">Adicionar</button>
+                </form>
+            </div>
+        </div>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <div class="col-md-12">
+            <div class="col-md-12">
+                <label>Adicionar Triangulo</label>
+                <form class="form-inline" th:action="@{/adicionarTriangulo}" method="post" role="form">
+                    <div class="form-group" >
+                        <label for="altura">Altura</label>
+                        <input type="text" class="form-control" id="altura" />
+                    </div>
+                    <div class="form-group" >
+                        <label for="base">Base</label>
+                        <input type="text" class="form-control" id="base" />
+                    </div>
+                    <div class="form-group" >
+                        <label for="hipotenusa">Hipotenusa</label>
+                        <input type="text" class="form-control" id="hipotenusa" />
+                    </div>
+                    <button type="submit" class="btn btn-default">Adicionar</button>
+                </form>
+        </div>
         </div>
     </div>
 </div>

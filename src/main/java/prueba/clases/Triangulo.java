@@ -9,15 +9,12 @@ public class Triangulo extends Figura{
     private int altura;
     private int hipotenusa;
 
-    public Triangulo(int numeroLados, int base, int altura, int hipotenusa) {
-        super(numeroLados);
+    public Triangulo(int base, int altura, int hipotenusa) {
+        super();
+        super.numeroLados = 3;
         this.base = base;
         this.altura = altura;
         this.hipotenusa = hipotenusa;
-    }
-
-    public Triangulo(int numeroLados) {
-        super(numeroLados);
     }
 
     @Override
