@@ -1,6 +1,7 @@
 package prueba.dao;
 
 import prueba.clases.Figura;
+import prueba.clases.WorkSpace;
 
 import java.util.List;
 
@@ -14,4 +15,5 @@ public interface FiguraDAO {
     public double perimetroTotal();
     void eliminarFiguraPos(int valor);
     void adicionarCuadrado(int valor) throws Exception;
+    WorkSpace obtenerAreaTrabajo();
 }

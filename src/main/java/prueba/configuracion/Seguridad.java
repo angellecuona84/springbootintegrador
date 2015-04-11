@@ -43,7 +43,7 @@ public class Seguridad extends WebSecurityConfigurerAdapter {
     public void configure(WebSecurity web) throws Exception {
         web
                 .ignoring()
-                .antMatchers("/webjars/**"); // #3
+                .antMatchers("/webjars/**","/enviarCorreo"); // #3
     }
 }
 

@@ -1,12 +1,15 @@
 package prueba.controladores;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 import prueba.clases.Figura;
+import prueba.clases.WorkSpace;
 import prueba.dao.FiguraDAO;
 import prueba.dao.FiguraDAOImpl;
+import prueba.mail.EnviarEmail;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -24,11 +27,14 @@ public class Controlador {
 
         return "index";
     }*/
-
+    @Autowired
     private FiguraDAO figuraDAO;
 
+    @Autowired
+    private EnviarEmail enviarEmail;
+
     public Controlador() throws Exception {
-        figuraDAO = new FiguraDAOImpl();
+        //figuraDAO = new FiguraDAOImpl();
 
     }
 
@@ -72,4 +78,21 @@ public class Controlador {
         }
         return new ModelAndView("index", this.cargarFiguras());
     }
+
+    @RequestMapping("/enviarCorreo")
+    public ModelAndView enviarCorreo() {
+        enviarEmail.sendMail("angelcubano@gmail.com", "angelcubano@gmail.com","Prueba","Por Dios que pinche jejeje");
+        return new ModelAndView("index", this.cargarFiguras());
+    }
+
+    @RequestMapping("/enviarCorreoAdjunto")
+    public ModelAndView enviarCorreoAdjunto() {
+        try {
+            enviarEmail.sendMailAdjunto("angelcubano@gmail.com", "angelcubano@gmail.com", "Prueba", "Por Dios que pinche jejeje", "");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return new ModelAndView("index", this.cargarFiguras());
+    }
+
 }

@@ -1,5 +1,7 @@
 package prueba.dao;
 
+import org.springframework.context.annotation.Bean;
+import org.springframework.stereotype.Repository;
 import prueba.clases.Cuadrado;
 import prueba.clases.Figura;
 import prueba.clases.Triangulo;
@@ -12,7 +14,7 @@ import java.util.List;
 /**
  * Created by Angel Luis on 05/04/2015.
  */
-
+@Repository
 public class FiguraDAOImpl implements FiguraDAO {
 
     private HashMap<String,WorkSpace> baseDatos;
@@ -48,5 +50,10 @@ public class FiguraDAOImpl implements FiguraDAO {
     @Override
     public void adicionarCuadrado(int valor) throws Exception {
         baseDatos.get("WorkSpace").agregarFigura(new Cuadrado(valor));
+    }
+
+    @Override
+    public WorkSpace obtenerAreaTrabajo() {
+        return baseDatos.get("WorkSpace");
     }
 }
