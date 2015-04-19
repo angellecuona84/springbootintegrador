@@ -6,6 +6,7 @@ import org.springframework.mail.MailException;
 import org.springframework.mail.MailSender;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.MimeMessageHelper;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Component;
 import prueba.configuracion.ConfiguracionCorreo;
 
@@ -23,6 +24,7 @@ public class EnviarEmailImpl implements EnviarEmail {
     private MailSender mailSender;
 
     @Override
+    @Async
     public void sendMail(String from, String to, String subject, String msg) {
         SimpleMailMessage message = new SimpleMailMessage();
 

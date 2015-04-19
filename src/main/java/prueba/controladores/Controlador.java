@@ -1,6 +1,9 @@
 package prueba.controladores;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.task.TaskExecutor;
+import org.springframework.scheduling.annotation.Async;
+import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -10,6 +13,7 @@ import prueba.clases.WorkSpace;
 import prueba.dao.FiguraDAO;
 import prueba.dao.FiguraDAOImpl;
 import prueba.mail.EnviarEmail;
+import prueba.utils.Util;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -27,6 +31,9 @@ public class Controlador {
 
         return "index";
     }*/
+    @Autowired
+    private Util util;
+
     @Autowired
     private FiguraDAO figuraDAO;
 
@@ -94,5 +101,15 @@ public class Controlador {
         }
         return new ModelAndView("index", this.cargarFiguras());
     }
+
+    @RequestMapping("/tareaAsincrona")
+    public ModelAndView tareaAsincrona() {
+        System.out.println("--------------------------------Aqui Empieza tarea Asincrona---------------------------------");
+        //taskExecutor.execute(new Util());
+        util.accionLarga();
+        System.out.println("--------------------------------Aqui Termina tarea Asincrona---------------------------------");
+        return new ModelAndView("index", this.cargarFiguras());
+    }
+
 
 }

@@ -1,6 +1,7 @@
 package prueba.mail;
 
 import org.springframework.core.annotation.Order;
+import org.springframework.scheduling.annotation.Async;
 
 import javax.mail.MessagingException;
 

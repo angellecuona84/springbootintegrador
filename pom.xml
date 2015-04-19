@@ -29,6 +29,13 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
+
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>org.springframework.context.support</artifactId>
+			<version>3.1.0.RELEASE</version>
+		</dependency>
+
 		<!-->Dependencia para Spring Security<-->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -55,7 +62,7 @@
 			<version>2.1.1</version>
 		</dependency>
 
-		<!-->Dependencia para jquery<-->
+		<!-->Dependencia para Mail<-->
 		<dependency>
 			<groupId>javax.mail</groupId>
 			<artifactId>mail</artifactId>
@@ -68,17 +75,38 @@
 			<version>1.1.1</version>
 		</dependency>
 
-		
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+
+		<!-->Dependencia para Hibernate<-->
 		<dependency>
 			<groupId>org.springframework</groupId>
-			<artifactId>org.springframework.context.support</artifactId>
-			<version>3.1.0.RELEASE</version>
+			<artifactId>spring-orm</artifactId>
+			<version>4.1.2.RELEASE</version>
 		</dependency>
+
+		<!--dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-core</artifactId>
+			<version>3.6.3.Final</version>
+		</dependency-->
+
+		<!-- Hibernate c3p0 connection pool -->
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-c3p0</artifactId>
+			<version>4.3.7.Final</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.postgresql</groupId>
+			<artifactId>postgresql</artifactId>
+			<version>9.3-1102-jdbc41</version>
+		</dependency>
+
 	</dependencies>
 
 	<build>

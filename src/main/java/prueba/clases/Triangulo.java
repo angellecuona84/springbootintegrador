@@ -1,12 +1,25 @@
 package prueba.clases;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.PrimaryKeyJoinColumn;
+import javax.persistence.Table;
+
 /**
  * Created by Angel Luis on 02/04/2015.
  */
+@Entity
+@Table(name="TRIANGULO")
+@PrimaryKeyJoinColumn(name="ID")
 public class Triangulo extends Figura{
 
+    @Column(name="BASE", nullable = false)
     private int base;
+
+    @Column(name="ALTURA", nullable = false)
     private int altura;
+
+    @Column(name="HIPOTENUSA", nullable = false)
     private int hipotenusa;
 
     public Triangulo(int base, int altura, int hipotenusa) {

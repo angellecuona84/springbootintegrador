@@ -1,15 +1,29 @@
 package prueba.clases;
 
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 /**
  * Created by Angel Luis on 02/04/2015.
  */
+@Entity
+@Table(name="WORKSPACE")
 public class WorkSpace {
 
+    @Id
+    @GeneratedValue
+    @Column(name="WORKSPACE_ID")
+    protected int id;
+
+    @Column(name = "NOMBRE", nullable = false)
     private String nombre;
+
+    @Column(name = "LIMITE_FIGURA", nullable = false)
     private int limiteFigura;
+
+    @OneToMany(mappedBy="workSpace")
     private List<Figura> figuras;
 
     public WorkSpace(String nombre, int limiteFigura) {

@@ -1,10 +1,19 @@
 package prueba.clases;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.PrimaryKeyJoinColumn;
+import javax.persistence.Table;
+
 /**
  * Created by Angel Luis on 02/04/2015.
  */
+@Entity
+@Table(name="CUADRADO")
+@PrimaryKeyJoinColumn(name="ID")
 public class Cuadrado extends Figura {
 
+    @Column(name="LADO", nullable = false)
     private int lado;
 
     public Cuadrado(int lado) {
