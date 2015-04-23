@@ -41,8 +41,8 @@
                 </thead>
                 <tbody>
                 <tr th:each="figura,row : ${figuras}">
-                    <td th:text="${#ids.seq('')}">
-
+                    <!--td th:text="${#ids.seq('')}"-->
+                    <td th:text="${figura.id}">
                     </td>
                     <!--td th:text="${figura.numeroLados}"></td-->
                     <td th:switch="${figura.numeroLados}">
@@ -53,8 +53,8 @@
                     <td th:text="${figura.area}"></td>
                     <td th:text="${figura.perimetro}"></td>
                     <td>
-
-                        <a href="/Eliminar.html" th:href="@{/Eliminar(id=${row.index})}"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a>
+                        <!--a href="/Eliminar.html" th:href="@{/Eliminar(id=${row.index})}"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a-->
+                        <a href="/Eliminar.html" th:href="@{/Eliminar(id=${figura.id})}"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a>
                     </td>
                 </tr>
                 <tr class="info">

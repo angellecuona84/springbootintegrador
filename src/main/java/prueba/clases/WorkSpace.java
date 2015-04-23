@@ -1,5 +1,9 @@
 package prueba.clases;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import org.hibernate.FetchMode;
+import org.hibernate.annotations.Fetch;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -23,13 +27,25 @@ public class WorkSpace {
     @Column(name = "LIMITE_FIGURA", nullable = false)
     private int limiteFigura;
 
-    @OneToMany(mappedBy="workSpace")
+    @OneToMany(fetch=FetchType.EAGER, mappedBy="workSpace")
+    @JsonManagedReference
     private List<Figura> figuras;
 
     public WorkSpace(String nombre, int limiteFigura) {
         this.nombre = nombre;
         this.limiteFigura = limiteFigura;
         figuras = new ArrayList<Figura>(limiteFigura);
+    }
+
+    public WorkSpace() {
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public boolean agregarFigura(Figura figura) throws Exception {
@@ -112,5 +128,6 @@ public class WorkSpace {
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
+
 }
 

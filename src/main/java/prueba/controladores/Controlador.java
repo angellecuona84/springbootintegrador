@@ -1,6 +1,7 @@
 package prueba.controladores;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.core.task.TaskExecutor;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
@@ -35,6 +36,7 @@ public class Controlador {
     private Util util;
 
     @Autowired
+    @Qualifier("FiguraDAODBImpl")
     private FiguraDAO figuraDAO;
 
     @Autowired
@@ -77,6 +79,7 @@ public class Controlador {
     public ModelAndView addCuadrado(HttpServletRequest request) {
         int valor = Integer.parseInt(request.getParameter("lado"));
         try {
+            //Recordar aqui que el manejo de error solo esta en el DAO en memoria.
             figuraDAO.adicionarCuadrado(valor);
         } catch (Exception e) {
             HashMap map = this.cargarFiguras();

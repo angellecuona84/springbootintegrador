@@ -15,5 +15,5 @@ public interface FiguraDAO {
     public double perimetroTotal();
     void eliminarFiguraPos(int valor);
     void adicionarCuadrado(int valor) throws Exception;
-    WorkSpace obtenerAreaTrabajo();
+    WorkSpace obtenerAreaTrabajo(String id);
 }

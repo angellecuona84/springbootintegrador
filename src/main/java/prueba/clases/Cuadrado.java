@@ -16,6 +16,11 @@ public class Cuadrado extends Figura {
     @Column(name="LADO", nullable = false)
     private int lado;
 
+    public Cuadrado() {
+        super();
+        super.numeroLados = 4;
+    }
+
     public Cuadrado(int lado) {
         super();
         super.numeroLados = 4;

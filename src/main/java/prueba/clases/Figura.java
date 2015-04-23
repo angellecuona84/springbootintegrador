@@ -1,5 +1,8 @@
 package prueba.clases;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 
 /**
@@ -21,11 +24,20 @@ public abstract class Figura {
 
     @ManyToOne
     @JoinColumn(name="WORKSPACE_ID")
+    //@JsonIgnore
+    @JsonBackReference
     protected WorkSpace workSpace;
 
     public Figura() {
     }
 
+    public WorkSpace getWorkSpace() {
+        return workSpace;
+    }
+
+    public void setWorkSpace(WorkSpace workSpace) {
+        this.workSpace = workSpace;
+    }
 
     public int getId() {
         return id;

@@ -53,7 +53,7 @@ public class FiguraDAOImpl implements FiguraDAO {
     }
 
     @Override
-    public WorkSpace obtenerAreaTrabajo() {
+    public WorkSpace obtenerAreaTrabajo(String id) {
         return baseDatos.get("WorkSpace");
     }
 }
