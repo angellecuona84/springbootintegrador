@@ -33,7 +33,7 @@ public class ConfiguracionHibernate {
     public LocalSessionFactoryBean sessionFactory() {
         LocalSessionFactoryBean sessionFactory = new LocalSessionFactoryBean();
         sessionFactory.setDataSource(dataSource());
-        sessionFactory.setPackagesToScan(new String[] { "prueba.clases" });//Arreglar
+        sessionFactory.setPackagesToScan(new String[] { "prueba.clases","prueba.seguridad" });//Arreglar
         sessionFactory.setHibernateProperties(hibernateProperties());
         return sessionFactory;
     }
