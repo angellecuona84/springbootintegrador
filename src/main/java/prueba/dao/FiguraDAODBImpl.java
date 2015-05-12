@@ -59,4 +59,14 @@ public class FiguraDAODBImpl extends AbstractDAO implements FiguraDAO {
         criteria.add(Restrictions.eq("id", 1));
         return (WorkSpace) criteria.uniqueResult();
     }
+
+    @Override
+    public prueba.webservice.WorkSpace obtenerAreaTrabajoServicio(int id) {
+        WorkSpace temp = this.obtenerAreaTrabajo(id+"");
+        prueba.webservice.WorkSpace result = new prueba.webservice.WorkSpace();
+        result.setId(temp.getId());
+        result.setLimiteFigura(temp.getLimiteFigura());
+        result.setNombre(temp.getNombre());
+        return result;
+    }
 }

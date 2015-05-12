@@ -1,0 +1,19 @@
+
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="webservice/service" xmlns:workspace="webservice" targetNamespace="webservice/service" elementFormDefault="qualified">
+	<xsd:import namespace="webservice" schemaLocation="workspace.xsd"/>
+	<xsd:element name="AreaTrabajoRequest">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element name="id" type="xsd:string"/>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="AreaTrabajoResponse">
+		<xsd:complexType>
+			<xsd:sequence>
+				 <xsd:element name="AreaTrabajo" type="workspace:WorkSpace"/>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+</xsd:schema>

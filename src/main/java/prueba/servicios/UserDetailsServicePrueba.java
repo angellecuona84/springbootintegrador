@@ -20,7 +20,7 @@ import java.util.Set;
 /**
  * Created by Angel Luis on 23/04/2015.
  */
-@Service
+@Service("userDetailsService")
 public class UserDetailsServicePrueba implements UserDetailsService {
 
     //get user from the database, via Hibernate

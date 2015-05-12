@@ -13,7 +13,9 @@ public interface FiguraDAO {
     public List<Figura> getFiguras();
     public double areaTotal();
     public double perimetroTotal();
-    void eliminarFiguraPos(int valor);
-    void adicionarCuadrado(int valor) throws Exception;
-    WorkSpace obtenerAreaTrabajo(String id);
+    public void eliminarFiguraPos(int valor);
+    public void adicionarCuadrado(int valor) throws Exception;
+    public WorkSpace obtenerAreaTrabajo(String id);
+
+    public prueba.webservice.WorkSpace obtenerAreaTrabajoServicio(int id);
 }

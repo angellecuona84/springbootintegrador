@@ -6,6 +6,7 @@ import org.springframework.core.task.TaskExecutor;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -68,6 +69,18 @@ public class Controlador {
         return "login";
     }
 
+    // Login form with error
+    @RequestMapping("/login-error")
+    public String loginError(Model model) {
+        model.addAttribute("loginError", true);
+        return "login";
+    }
+
+    @RequestMapping("/paginaError")
+    public String paginaError() {
+        return "paginaError";
+    }
+
     @RequestMapping("/Eliminar")
     public ModelAndView eliminar(HttpServletRequest request) {
         int valor = Integer.parseInt(request.getParameter("id"));
@@ -109,10 +122,36 @@ public class Controlador {
     public ModelAndView tareaAsincrona() {
         System.out.println("--------------------------------Aqui Empieza tarea Asincrona---------------------------------");
         //taskExecutor.execute(new Util());
+        for (int i = 0; i < 1000 ; i++) {
+            System.out.println("--------------------------------Hilo" + i + " ---------------------------------");
+            util.accionLarga1(i);
+        }
         util.accionLarga();
         System.out.println("--------------------------------Aqui Termina tarea Asincrona---------------------------------");
         return new ModelAndView("index", this.cargarFiguras());
     }
 
+    @RequestMapping(value = "/paginaAdmin", method = RequestMethod.GET)
+    public ModelAndView paginaAdmin() {
 
+        ModelAndView model = new ModelAndView();
+        model.addObject("title", "Spring Security + Ejemplo de Hibernate");
+        model.addObject("message", "Esta pagina solo es para usuarios administradores!");
+        model.setViewName("paginaAdmin");
+
+        return model;
+
+    }
+
+    @RequestMapping(value = "/paginaUsuario", method = RequestMethod.GET)
+    public ModelAndView paginaUsuario() {
+
+        ModelAndView model = new ModelAndView();
+        model.addObject("title", "Spring Security + Ejemplo de Hibernate");
+        model.addObject("message", "Esta pagina solo es para usuarios (user) y administradores (angel)!");
+        model.setViewName("paginaUsuario");
+
+        return model;
+
+    }
 }

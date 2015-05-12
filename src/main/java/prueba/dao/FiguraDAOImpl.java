@@ -56,4 +56,9 @@ public class FiguraDAOImpl implements FiguraDAO {
     public WorkSpace obtenerAreaTrabajo(String id) {
         return baseDatos.get("WorkSpace");
     }
+
+    @Override
+    public prueba.webservice.WorkSpace obtenerAreaTrabajoServicio(int id) {
+        return null;
+    }
 }

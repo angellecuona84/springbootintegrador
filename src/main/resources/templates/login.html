@@ -21,6 +21,7 @@
 <div class="container">
     <div class="row clearfix">
         <div class="col-md-6 column">
+            <p th:color="RGB(0,0,255)" th:if="${loginError}">Usuario y Contraseña Incorrecta</p>
             <form th:action="@{/login}" method="post" role="form">
                 <div class="form-group">
                     <label>Usuario</label><input class="form-control" name="username" type="text" />

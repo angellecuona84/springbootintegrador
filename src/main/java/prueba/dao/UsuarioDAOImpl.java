@@ -16,7 +16,7 @@ public class UsuarioDAOImpl extends AbstractDAO implements UsuarioDAO{
     @Override
     public Usuario findByUserName(String username) {
         Criteria criteria = getSession().createCriteria(Usuario.class);
-        criteria.add(Restrictions.eq("username", "angel"));
+        criteria.add(Restrictions.eq("username", username));
         Object usuario = criteria.uniqueResult();
         return usuario!= null? (Usuario) criteria.uniqueResult() :null;
     }

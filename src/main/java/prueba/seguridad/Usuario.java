@@ -12,9 +12,19 @@ import java.util.Set;
 @Table(name="usuario")
 public class Usuario {
 
+    @Id
+    @Column(name = "username", unique = true,
+            nullable = false, length = 45)
     private String username;
+
+    @Column(name = "password",
+            nullable = false, length = 60)
     private String password;
+
+    @Column(name = "enabled", nullable = false)
     private boolean enabled;
+
+    @OneToMany(fetch=FetchType.EAGER, mappedBy = "user")
     private Set<RolUsuario> userRole = new HashSet<RolUsuario>();
 
     public Usuario() {
@@ -35,9 +45,7 @@ public class Usuario {
     }
 
 
-    @Id
-    @Column(name = "username", unique = true,
-            nullable = false, length = 45)
+
     public String getUsername() {
         return this.username;
     }
@@ -46,8 +54,6 @@ public class Usuario {
         this.username = username;
     }
 
-    @Column(name = "password",
-            nullable = false, length = 60)
     public String getPassword() {
         return this.password;
     }
@@ -56,7 +62,6 @@ public class Usuario {
         this.password = password;
     }
 
-    @Column(name = "enabled", nullable = false)
     public boolean isEnabled() {
         return this.enabled;
     }
@@ -65,7 +70,7 @@ public class Usuario {
         this.enabled = enabled;
     }
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "user")
+
     public Set<RolUsuario> getUserRole() {
         return this.userRole;
     }

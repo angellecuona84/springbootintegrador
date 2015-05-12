@@ -11,10 +11,21 @@ public class Util{
 
     @Async
     public void accionLarga() {
+        System.out.println("--------------------------------ACCION LARGA Iniciada---------------------------------");
         for (int i = 0; i < 1000 ; i++) {
             System.out.println("Esperando");
+            //accionLarga1(i);
         }
-        System.out.println("--------------------------------ACCION LARGA---------------------------------");
+        System.out.println("--------------------------------ACCION LARGA Terminada---------------------------------");
+    }
+
+    @Async
+    public void accionLarga1(int j) {
+        System.out.println("--------------------------------SUBACCION " + j +" Iniciada---------------------------------");
+        for (int i = 0; i < 100 ; i++) {
+            System.out.println("Esperando" + j);
+        }
+        System.out.println("--------------------------------SUBACCION " + j +" Terminada---------------------------------");
     }
 
    /* @Override
